@@ -1,0 +1,34 @@
+# Testing Terminology
+- Manual Testing
+    - testing performed manually by the tester without the use of automation software
+- Automated Testing
+    - testing performed by software that runs independent of a tester's manual input
+- Test Case
+    - test cases are the scenarios, test data, actors, and background information necessary for executing one or more tests
+- Test Report
+    - a summary of the results of test execution
+- Acceptance Testing
+    - is your application "acceptable"? Does it meet the requirements of stakeholders such as regulatory bodies (Regulatory Acceptance Testing), users (User Acceptance Testing)
+- System Testing
+    - testing your application as a whole works as intended
+        - "End to End" testing is using an application like an end user would (or could) and validating the system/application behaves as expected across the board
+- Test Plan
+    - a comprehensive document that outlines how a system/application should be tested
+- Test Object  
+    - the goal you are trying to accomplish with your testing
+- User Story
+    - a universal description of a feature/requirement for an application
+- Happy Path Testing (positive testing)
+    - given valid input, the expected output is achieved in your test
+        - valid input/data conforms to all requirements for an application/service
+- Sad Path Testing (negative testing)
+    - given invalid input, the expected output is achieved in your test
+        - invalid input/data does not conform to one or more requirements for an application/service
+- Test Suite
+    - a collection of test cases that are connected in some way
+- Standard Testing Life Cycle
+    - an order of operations for organizing, building, executing, and reporting on test results
+- Requirements Traceability Matrix
+    - a document that provides a visual aid to help link user stories, requirements, acceptance criteria, test cases, results, and any other relevant resources together
+- Acceptance Criteria
+    - the steps involved to achieve a User Story
