@@ -32,3 +32,5 @@
     - a document that provides a visual aid to help link user stories, requirements, acceptance criteria, test cases, results, and any other relevant resources together
 - Acceptance Criteria
     - the steps involved to achieve a User Story
+- Gherkin Syntax
+    - standardized language that is used by the Cucumber testing software and in other documentation to provide universally understood information about a system/feature
