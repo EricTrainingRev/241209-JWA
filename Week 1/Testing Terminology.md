@@ -41,3 +41,7 @@
     - a testing technique where test data that exists on the "boundary" of a requirement is used to represent the whole class of data that goes up to but not past the boundary
 - Decision Table
     - an organizational tool that allows you to match your test data combinations with the expected end results of those combined pieces of data being used in your acceptance criteria
+- Test data
+    - test data includes resources that are needed for executing a test case: this can be content like usernames, passwords, service specific data, anything needed to be provided by the user that is performing the test
+- Test scenario
+    - a collection of steps and test data executed together in order to test a feature/user story of an application

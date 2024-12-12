@@ -1,5 +1,6 @@
 # Test Data Organizer
-- User Story 1
+
+## User Story 1
 - Happy Path Testing
     - need username & password that meets all requirements
 
@@ -49,3 +50,40 @@ Once you have your positive and negative test data you need to organize what you
 |VU1|IP5|Invalid password alert|
 |VU1|IP6|Invalid password alert|
 |VU1|IP7|Invalid password alert|
+
+## User Story 2
+- Happy Path Testing
+
+|Id|valid username|
+|-|-|
+|VU1|Batman|
+
+|Id|valid password|
+|-|-|
+|VP1|Iamthenight1939|
+
+- Sad Path Testing
+
+|Id|invalid username|
+|-|-|
+|IU1|Robin|
+
+|Id|invalid password|
+|-|-|
+|IP1|Iamtheintern1939|
+
+Decision table for login
+
+|Username|Password|Expected Result|
+|-|-|-|
+|VU1|VP1|login success|
+|VU1|IP1|Invalid Credentials alert|
+|IU1|VP1|Invalid Credentials alert|
+|IU1|IP1|Invalid Credentials alert|
+
+Decision table for accessing home page
+
+|user state|expected result|
+|-|-|
+|logged in| can access home page directly|
+|logged out| can not access home page directly|
