@@ -37,3 +37,7 @@
 - Equivalence Partitioning
     - a testing technique where one value is used to represent all possible values in a class
         - a class is data that follows one or more sets of requirements
+- Boundary Value Analysis
+    - a testing technique where test data that exists on the "boundary" of a requirement is used to represent the whole class of data that goes up to but not past the boundary
+- Decision Table
+    - an organizational tool that allows you to match your test data combinations with the expected end results of those combined pieces of data being used in your acceptance criteria
