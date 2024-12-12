@@ -34,3 +34,6 @@
     - the steps involved to achieve a User Story
 - Gherkin Syntax
     - standardized language that is used by the Cucumber testing software and in other documentation to provide universally understood information about a system/feature
+- Equivalence Partitioning
+    - a testing technique where one value is used to represent all possible values in a class
+        - a class is data that follows one or more sets of requirements
