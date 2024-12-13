@@ -1,5 +1,21 @@
 # Test Team Organization Study Guide
 
+## Roles
+
+### Test Manager
+The **Test Manager** is responsible for overseeing the entire testing process, ensuring that it aligns with the project’s goals and quality standards. They develop test strategies, manage the testing team, and coordinate with other departments. Additionally, they ensure testing resources are effectively utilized, making sure the testing process is efficient and thorough
+
+### Tester
+**Testers** identify defects by executing tests. They ensure that the software functions as expected and meets specified requirements. Their key tasks include writing and executing test cases, reporting bugs, and verifying fixes. Testers often work closely with developers to understand the software and its potential issues, which helps contribute to the overall quality of the product
+
+### Tester/Developer Independence
+Quality is the responsibility of everyone involved in the software development process, though the roles we play in maintaining it can vary. Testers typically approach the software with a pessimistic mindset, operating under the belief that “this application has defects, and it is my job to find them.” In contrast, developers often have an optimistic mindset, thinking “this application works, and I need to continue building on top of it.” Despite these differing perspectives, it is crucial to remember that both testers and developers are working towards a common goal: deploying a fully functional and failure-free application to end users. By having independent testers, the testing process becomes more unbiased, improving defect detection and better ensuring the software meets required standards and specifications. This approach not only enhances the overall quality of the software but also builds confidence among stakeholders and end users
+
+### Stakeholder & Business Analysts
+**Stakeholders** represent the interests of those who have a stake in the project, such as customers, users, or management. They provide input on requirements and feedback on the software’s performance. Their responsibilities include reviewing test results, providing feedback, and making decisions based on the testing outcomes. Stakeholders ensure that the software meets the needs and expectations of its intended users
+
+**Business Analysts** act as a bridge between the business and technical teams. They usually have a good business understanding and technical knowledge, which helps them to analyze documentation and requests from both the business and technical teams. If there is a misunderstanding between the business and technical teams it is the job of the **Business Analysts** to help clarify and clear the misunderstandings and blockers
+
 ## Test Documents
 
 ### Test Strategy
@@ -44,6 +60,38 @@ Developed Test cases are carried out by the testers during the Test Execution Ph
 
 #### Test Cycle Closure
 The final phase, Test Cycle Closure, marks the completion of test execution and involves several activities, including a meeting to discuss and analyze the reports and other artifacts and identify successful strategies and takeaway lessons from the test cycle
+
+## Defect Management
+
+### Reporting Defects
+A defect is any condition, behavior, or functionality that produces incorrect or unexpected results according to system requirements. We track defects in documentation called the **Defect Report**. This report includes important details such as the priority and severity of the defect, which help in determining the order and urgency of addressing the issues. Additionally, the report contains environment information to specify the context in which the defect was found, and steps to reproduce the defect, which allows for accurate recreation for observation and fixing
+
+### Defect Life Cycle
+A simpler example of the **Defect Life Cycle** can be found in [this](https://www.baeldung.com/cs/defect-life-cycle-testing) Baledung article
+
+#### 1. Defect Identification (Discover and Log)
+In this initial phase, a defect is identified during various stages of software development, such as during code reviews, testing, or by end-users after deployment. The entry criteria for this phase includes the presence of a software application under development or in production and the occurrence of unexpected behavior or results. Actions taken include documenting the defect with relevant data, including steps to reproduce, screenshots, logs, etc. The exit criteria for this phase is the successful logging of the defect into a defect tracking system with all necessary information
+
+#### 2. Defect Categorization and Prioritization (Triage)
+Once a defect is logged, it needs to be categorized based on its severity and impact on the system. The entry criteria for this phase is the availability of a logged defect. Actions include assessing the defect's severity (e.g., critical, major, minor) and its priority (e.g., high, medium, low) based on factors like user impact, frequency, and business importance. The exit criteria is the assignment of a severity and priority level to the defect to help in planning the resolution process
+
+#### 3. Defect Assignment (Assign)
+After categorization, the defect is assigned to the appropriate team or individual responsible for fixing it. The entry criteria for this phase is a categorized and prioritized defect. Actions involve the project manager or lead developer reviewing the defect and assigning it to a developer or a team with the necessary expertise. The exit criteria are the successful assignment of the defect to a responsible party along with a tentative timeline for resolution
+
+#### 4. Defect Analysis and Planning (Fix Part 1)
+In this phase, the assigned developer or team analyzes the defect to understand its root cause. The entry criteria include an assigned defect. Actions taken involve reviewing the code, reproducing the defect, and identifying the underlying issue. This phase may also involve planning the fix, estimating the effort required, and determining the impact on other parts of the system. The exit criteria are a clear understanding of the defect's cause and a plan for fixing it
+
+#### 5. Defect Fixing (Fix Part 2)
+This is the phase where the actual coding work to fix the defect takes place. The entry criteria are a well-understood defect and a plan for fixing it. Actions include modifying the code, performing unit tests, and ensuring that the fix does not introduce new defects. The exit criteria are the completion of the code changes and initial testing to confirm that the defect is resolved
+
+#### 6. Defect Verification (Verify)
+Once the defect is fixed, it needs to be verified to ensure that the fix works as intended and does not affect other parts of the system. The entry criteria for this phase is a fixed defect. Actions involve retesting the defect in the same environment where it was originally found, as well as regression testing to ensure no new issues have been introduced. The exit criteria are the successful verification of the defect fix and confirmation that the system is stable
+
+#### 7. Defect Closure (Close)
+After verification, the defect is marked as closed. The entry criteria for this phase is a verified defect fix. Actions include updating the defect tracking system to reflect the closure, informing stakeholders, and documenting any lessons learned. The exit criteria are the formal closure of the defect in the tracking system and communication to all relevant parties
+
+#### 8. Defect Reporting and Metrics
+The final phase involves reporting on the defect and gathering metrics to improve the development process. The entry criteria is a closed defect. Actions include generating reports on defect trends, root causes, and resolution times. These metrics help in identifying areas for process improvement and preventing future defects. The exit criteria are the availability of comprehensive defect reports and actionable insights for process enhancement
 
 ## Agile
 
