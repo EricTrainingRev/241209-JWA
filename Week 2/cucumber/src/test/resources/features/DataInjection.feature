@@ -20,3 +20,17 @@ Feature: Cucumber data injection
     |numOne|numTwo|sum|
     |5     |10    |15 |
     |8     |5     |13 |
+
+  # When working with strings, if you want the test data injected you need to wrap the placeholder with
+  # quotes, otherwise Cucumber will inject the string value into the step text directly and you will need
+  # unique step implementations for each piece of data. See the phrase steps for an example of how this works
+  Scenario Outline: Strings can be concatenated
+    Given We start with the word "<wordOne>"
+    And   We have the word "<wordTwo>"
+    When  We concatenate the words
+    Then  We should have the phrase <phrase>
+
+  Examples:
+    |wordOne|wordTwo|phrase|
+    |Hello  |world  |Hello world|
+    |Super  |coder  |Super-coder|
