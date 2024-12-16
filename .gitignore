@@ -154,3 +154,6 @@ buildNumber.properties
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/java,maven,visualstudiocode,intellij+all
+
+# ignoring sub .idea folders
+**/.idea
