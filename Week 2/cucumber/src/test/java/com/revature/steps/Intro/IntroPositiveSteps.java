@@ -1,16 +1,10 @@
-package com.revature.steps;
+package com.revature.steps.Intro;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 //import io.cucumber.java.en.*; this works too
 
-public class IntroSteps {
-
-    @Given("Some starting condition")
-    public void some_starting_condition() {
-        System.out.println("This is our starting condition");
-    }
+public class IntroPositiveSteps {
 
     @When("Some positive action is taken")
     public void some_positive_action_is_taken() {
