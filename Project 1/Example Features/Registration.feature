@@ -1,3 +1,5 @@
+# Since the feature is being tagged, these tags cascade to the contained Scenario and Scenario Outline
+@US1 @SR1
 Feature: User Registration
     As a new user I want to open an account with the Planetarium so I can save my celestial findings
 
@@ -13,6 +15,8 @@ Feature: User Registration
         Then    the user should get a browser alert saying "Account created successfully"
         And     the user should be redirected to the login page
 
+    # these tags will apply to each run of the Scenario Outline determined by the Examples table data
+    @UR1 @UR2 @UR3 @UR4 @UR5 @UR6
     Scenario Outline: Users can not register a new account with invalid credentials
         When    the user provides username "<username>"
         And     the user provides password "<password>"
