@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select</title>
+</head>
+<body>
+    <h1></h1>
+    <select>
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="mouse">Mouse</option>
+        <option value="fish">Fish</option>
+    </select>
+</body>
+<script>
+    const select = document.querySelector('select');
+    const h1 = document.querySelector('h1');
+
+    select.addEventListener('change', function() {
+        h1.textContent = select.value;
+    });
+</script>
+</html>

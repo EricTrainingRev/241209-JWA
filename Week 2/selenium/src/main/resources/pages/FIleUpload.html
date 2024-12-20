@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+<body>
+    <img src="" alt="Image will appear here">
+    <input type="file" accept="image/*">
+</body>
+<script>
+    const input = document.querySelector('input');
+    const img = document.querySelector('img');
+
+    input.addEventListener('change', function() {
+        img.src = URL.createObjectURL(input.files[0]);
+    });
+</script>
+</html>

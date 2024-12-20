@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Receiver</title>
+</head>
+<body>
+    <h1>Go to page two to reveal the secret message! It will only be revealed if this page remains open</h1>
+    <button>Open Page Two</button>
+    <p hidden="true">Bruce Wayne is Batman!</p>
+</body>
+<script>
+    const p = document.querySelector('p');
+    const bc = new BroadcastChannel('secret-message');
+    const button = document.querySelector('button')
+    
+    bc.onmessage = function(event) {
+        if (event.data === 'reveal message') {
+            p.removeAttribute('hidden');
+        }
+    }
+
+    button.addEventListener("click", (event) => {
+        window.open("PageTwo.html");
+    })
+
+
+</script>
+</html>

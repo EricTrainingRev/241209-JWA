@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Sender</title>
+</head>
+<body>
+    <h1>Click the button to reveal the secret message on page one!</h1>
+    <button>Reveal</button>
+</body>
+<script>
+    const bc = new BroadcastChannel('secret-message');
+    const button = document.querySelector('button');
+
+    button.addEventListener('click', function() {
+        bc.postMessage('reveal message');
+    });
+</script>
+</html>
