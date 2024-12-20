@@ -15,7 +15,7 @@ public class HandleWindowContext {
         WebDriver driver = null;
         try{
             String[] greeting = {"Hello","world"};
-            
+
             driver = new ChromeDriver();
             driver.get("C:\\Users\\EricSuminski\\Desktop\\241209-JWA\\Week 2\\selenium\\src\\main\\resources\\pages\\PageOne.html");
             WebElement buttonToOpenPageTwo = driver.findElement(By.tagName("button"));
