@@ -25,7 +25,7 @@ To get started, first include the following dependency in your `pom.xml` file (a
   <version>3.141.59</version>
 </dependency>
 
-<!-- NOTE: this dependency can be used to automate driver management for Selenium if not using version 4.* or newer -->
+<!-- NOTE: this dependency can be used to automate driver management -->
 <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
 <dependency>
     <groupId>io.github.bonigarcia</groupId>
@@ -139,7 +139,7 @@ There are some common actions that can be taken on any element returned from the
 - **submit()**: deprecated, but still supported for compatibility. Used to be the preferred way of submitting web forms
 
 ### Waits
-There are scenarios when you will need to tell Selenium to "wait" for a condition on the web page to be met: the element could load after a planned delay, latency may fluctuate, etc. Selenium has three different "wait" types to help you prevent Selenium from throwing uncessary exceptions:
+There are scenarios when you will need to tell Selenium to "wait" for a condition on the web page to be met: the element could load after a planned delay, latency may fluctuate, etc. Selenium has three different "wait" types to help you prevent Selenium from throwing unnecessary exceptions:
 - Implicit Waits
 - Explicit Waits
 - Fluent Waits
@@ -189,6 +189,25 @@ alert.getText(); // returns the text content of the alert
 alert.sendKeys(); // sends text to the alert, can be used if the alert accepts input
 alert.accept(); // clicks the "ok" button on the alert
 alert.dismiss(); // clicks the "cancel" button on the alert
+```
+
+### Actions API
+Selenium WebDriver makes use of HTTP to interact with the browser: for most interactions this is fine, but sometimes you need a more true-to-the-user way of interacting with the browser (drag and drop, moving a slider via click and drag, drawing in a canvas, etc.). In these scenarios Selenium has the Actions API: using the Actions class you can chain together a collection of commands that give you more fine-tune control over the user mouse, keyboard, wheel, and pen if one is connected. These actions you chain together can then be executed immediately or saved in an Action object for future use
+
+```java
+// example taken from lecture demo
+            new Actions(driver)
+                    // moves to the given position in the browser
+                    .moveToLocation(sliderTopLeft.getX(),sliderTopLeft.getY() + sliderWidthAndHeight.getHeight()/2 )
+                    // makes the mouse click and hold
+                    .clickAndHold()
+                    // moves 60 pixels to the right
+                    .moveByOffset(60,0)
+                    // releases the mouse button
+                    .release()
+                    // this tells Selenium to build and execute the chain of actions
+                    // build() would instead build and return an Action object that could be used later
+                    .perform();
 ```
 
 ### Screenshots

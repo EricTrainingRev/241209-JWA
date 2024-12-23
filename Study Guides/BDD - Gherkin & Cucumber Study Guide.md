@@ -1,5 +1,8 @@
 # BDD -Gherkin & Cucumber Study Guide
 
+## Behavior Driven Development
+Behavior Driven Development (BDD) is the practice of performing development from the perspective of the end user. It takes into account the user experience, expectations, actions, etc. If you can think of something the end user might consider with your intended application, it should be considered. This approach should affect the way you think about all the parts of your application
+
 ### End to End Testing
 A common practice in BDD is End to End testing: this is the process of simulating an end user interacting with the system you are building, usually in an automated fashion:
 - log in to a service
@@ -240,3 +243,34 @@ public class TestRunner {
 ```
 
 Note in the above: All Cucumber has done is link the feature file steps with the Java code steps by using the TestRunner class: you as the tester must provide the means of actually implementing the steps. I skipped ahead a bit and added the Driver field to the TestRunner class already: Selenium will make use of it to interact with the webpage.
+
+### Hooks
+Often one or more actions will need to be taken in order to set up your testing environment: Cucumber provides "hooks" for running these setup methods before your scenarios. Likewise, there are hooks for executing code after your scenarios finish, in case you need to perform any sort of teardown, logging, take screenshots, etc
+- @BeforeAll
+    - runs once before any scenarios are executed
+- @Before
+    - executes before a scenario, runs once for each scenario
+- @BeforeStep
+    - executed before each scenario step
+- @AfterStep
+    - same as BeforeStep, but runs after the scenario steps
+- @After
+    - same as Before, but runs after the scenario is finished
+- @AfterAll
+    - as as BeforeAll, except only runs after all scenarios are finished
+
+A few more notes about hooks:
+- hooks can be set to run in a specific order, so any actions that need to run in a specific sequence can be facilitated this way
+```java
+@Before(order = 2)
+public void hookMethod(){
+    // something happens
+}
+```
+- hooks can be set to run with scenarios or features that have specific tags
+```java
+@After("@Flakey")
+public void hookMethod(){
+    // something happens
+}
+```
