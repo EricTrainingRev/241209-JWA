@@ -110,8 +110,13 @@ public class UsingActionAPI {
                 since the min value is 0 we have to tell our app to add 1 to the total possible values
              */
             int valueZones = (sliderWidth / Math.abs(min + max)) + 1;
-            int targetValue = 6;
+            int targetValue = 6; // this is our arbitrary target value
 
+            /*
+                Once we have the size of the value zones and the target value we want to achieve, we
+                multiply them together to get the amount of distance to travel along the x axis for the
+                slider to show our target value
+             */
             int xOffset = valueZones*targetValue;
 
             new Actions(driver)
@@ -151,6 +156,8 @@ public class UsingActionAPI {
 
                         If it is ~12 pixels per value, and we want to get to the value 6, we move the X offset by
                         12*6 = 72
+
+                        values saving these calculations have been created above the Action chain
                      */
                     .moveByOffset(xOffset,0)
                     /*
