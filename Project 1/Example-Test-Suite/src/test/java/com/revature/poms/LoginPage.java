@@ -18,6 +18,9 @@ public class LoginPage {
     @FindBy(tagName = "input")
     private WebElement loginButton;
 
+    @FindBy(tagName = "a")
+    private WebElement registrationLink;
+
     public LoginPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -32,6 +35,10 @@ public class LoginPage {
 
     public void openLoginPage(){
         driver.get("http://localhost:8080/");
+    }
+
+    public void clickRegistrationLink(){
+        registrationLink.click();
     }
 
 }
