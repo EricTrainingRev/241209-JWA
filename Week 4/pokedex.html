@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
 </head>
+
 <body>
     <h1>Welcome to the Pokedex!</h1>
     <input type="number" placeholder="enter pokemon ID" id="idInput" value="1" min="1">
@@ -13,6 +15,9 @@
     <h2 id="pokeName"></h2>
     <div id="typeContainer">
         <!-- this div will contain the type info of the pokemon -->
+    </div>
+    <div id="spriteContainer">
+        <!-- this div will contain the sprites of the pokemon -->
     </div>
 </body>
 <script>
@@ -30,8 +35,11 @@
         keyword to give yourself access to the "await" keyword, which will simplify working with
         promise objects
     */
-   // getPokemonInfo(2); functions are hoisted with their implementation, so this is valid JS
-    async function getPokemonInfo(id){
+    if(sessionStorage.getItem("pokeId")){
+        getPokemonInfo(sessionStorage.getItem("pokeId"));
+    }
+    // getPokemonInfo(2); functions are hoisted with their implementation, so this is valid JS
+    async function getPokemonInfo(id) {
         /*
             When creating variables in JavaScript you can use one of three keywords when defining
             the variable:
@@ -42,44 +50,71 @@
                    value at the start of the script, value is assigned when the browser reaches the line
                    we created the variable on)
         */
-       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`); // semi colons represent the end of a statement
-       console.log(response);
-       /*
-            Once you have access to a response object, you can then access the body of the response
-            through the use of various methods, each designed for a different type of response body
-       */
-      const body = await response.json();
-      /*
-        the json method converts a json into an object literal in JavaScript. Object literals are
-        simply key value pairs, but instead of using a string to reference the key you simply refernce
-        it like a field in a Java object
-      */
-      console.log(body);
-      /*
-        To set the pokemon name in our h2 element, we simply reference the element and set its
-        textContent to the value of the name key in the body json
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`); // semi colons represent the end of a statement
+        console.log(response);
+        /*
+             Once you have access to a response object, you can then access the body of the response
+             through the use of various methods, each designed for a different type of response body
+        */
+        const body = await response.json();
+        /*
+          the json method converts a json into an object literal in JavaScript. Object literals are
+          simply key value pairs, but instead of using a string to reference the key you simply refernce
+          it like a field in a Java object
+        */
+        console.log(body);
+        /*
+          To set the pokemon name in our h2 element, we simply reference the element and set its
+          textContent to the value of the name key in the body json
+  
+          Depending on how much context you provide the variables, you may or may not have much
+          intellisense to work with
+        */
+        pokeName.textContent = body.name;
 
-        Depending on how much context you provide the variables, you may or may not have much
-        intellisense to work with
-      */
-      pokeName.textContent = body.name;
+        /*
+          To access the type name we have to enter the types array, then access the type object, 
+          then access the name of the type, to actually get our string value we want. For those
+          pokemon that have more than 1 type we need to loop through the types array to grab all
+          the relevant information
+        */
+        //   console.log(body.types[0].type.name)
+        // for each iteration, variable object points to an object literal in the types array
+        typeContainer.innerHTML = "";
+        for (let object of body.types) { // "of" is used when iterating through an array
+            let type = object.type.name;
+            let p = document.createElement("p");
+            p.textContent = type;
+            document.body.inner
+            typeContainer.appendChild(p);
+        }
 
-      /*
-        To access the type name we have to enter the types array, then access the type object, 
-        then access the name of the type, to actually get our string value we want. For those
-        pokemon that have more than 1 type we need to loop through the types array to grab all
-        the relevant information
-      */
-    //   console.log(body.types[0].type.name)
-      // for each iteration, variable object points to an object literal in the types array
-      typeContainer.innerHTML = "";
-      for(let object of body.types){
-        let type = object.type.name;
-        let p = document.createElement("p");
-        p.textContent = type;
-        document.body.inner
-        typeContainer.appendChild(p);
-      }
+        spriteContainer.innerHTML = "";
+        for (let key in body.sprites) {// "in" is used when iterating through the keys of an object
+            // JavaScript supports "truthy" values: generally, non-null values are the same as "true" when making logic checks  
+            // when iterating through an object use square brackets instead of the dot operator to reference the key
+            if (typeof body.sprites[key] === "string") { // JavaScript supports "falsey" values: null is the same as "false" when making logic checks
+                // "===" is the strict equality operator: if types don't match between compared data, auto returns false
+                // "==" is the loose equality operator: JavaScript will attempt to make the types compared compatible before checking their values
+                let img = document.createElement("img");
+                img.src = body.sprites[key];
+                spriteContainer.appendChild(img);
+            }
+        }
+        /*
+            A quick and easy way to cache information in the browser is to use local/session
+            storage. Local storage persists beyond the browser session, session storage exists
+            as long as the browser/tab does
+        */
+        sessionStorage.setItem("pokeId", id);
+        localStorage.clear();
+
     }
+
+    // returns true, JS coerces types before making check
+    console.log(5 == "5");
+    // returns false, JS does not coerce types before making check
+    console.log(5 === "5");
 </script>
+
 </html>
