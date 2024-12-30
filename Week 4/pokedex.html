@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+</head>
+<body>
+    <h1>Welcome to the Pokedex!</h1>
+    <input type="number" placeholder="enter pokemon ID" id="idInput" value="1" min="1">
+    <!-- browsers create references to elements that share the name of the element id -->
+    <button id="searchButton" onclick="getPokemonInfo(idInput.value)">search for Pokemon</button>
+    <h2 id="pokeName"></h2>
+    <div id="typeContainer">
+        <!-- this div will contain the type info of the pokemon -->
+    </div>
+</body>
+<script>
+    /*
+        An easy way to make HTTP requests via a web page is to use the fetch API. This is
+        built in to the browser and allows for making your HTTP requests and handling the
+        responses from whatever web service you query. It benefits from using async/await,
+        so that will be used here in order to speed things up
+    */
+
+    /*
+        to make a function in JavaScript you use the function keyword, give the function a name,
+        and define any parameters for the function. The body of the function goes between curly
+        brackets. If you know you are going to work with promise objects you can use the async
+        keyword to give yourself access to the "await" keyword, which will simplify working with
+        promise objects
+    */
+   // getPokemonInfo(2); functions are hoisted with their implementation, so this is valid JS
+    async function getPokemonInfo(id){
+        /*
+            When creating variables in JavaScript you can use one of three keywords when defining
+            the variable:
+            - const*: the variable is "final" in that it can not change its reference
+            - let*: the variable is "flexible" in that it can change its reference
+            - var: the variable is "flexible" in that it can change its reference, and the variable
+                   is also "hoisted" to the top of the script (variable is created without its assigned
+                   value at the start of the script, value is assigned when the browser reaches the line
+                   we created the variable on)
+        */
+       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`); // semi colons represent the end of a statement
+       console.log(response);
+       /*
+            Once you have access to a response object, you can then access the body of the response
+            through the use of various methods, each designed for a different type of response body
+       */
+      const body = await response.json();
+      /*
+        the json method converts a json into an object literal in JavaScript. Object literals are
+        simply key value pairs, but instead of using a string to reference the key you simply refernce
+        it like a field in a Java object
+      */
+      console.log(body);
+      /*
+        To set the pokemon name in our h2 element, we simply reference the element and set its
+        textContent to the value of the name key in the body json
+
+        Depending on how much context you provide the variables, you may or may not have much
+        intellisense to work with
+      */
+      pokeName.textContent = body.name;
+
+      /*
+        To access the type name we have to enter the types array, then access the type object, 
+        then access the name of the type, to actually get our string value we want. For those
+        pokemon that have more than 1 type we need to loop through the types array to grab all
+        the relevant information
+      */
+    //   console.log(body.types[0].type.name)
+      // for each iteration, variable object points to an object literal in the types array
+      typeContainer.innerHTML = "";
+      for(let object of body.types){
+        let type = object.type.name;
+        let p = document.createElement("p");
+        p.textContent = type;
+        document.body.inner
+        typeContainer.appendChild(p);
+      }
+    }
+</script>
+</html>
