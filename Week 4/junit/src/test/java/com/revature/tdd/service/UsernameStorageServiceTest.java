@@ -8,6 +8,7 @@ import com.revature.service.UsernameStorageServiceImp;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.function.ThrowingRunnable;
 
@@ -75,6 +76,12 @@ public class UsernameStorageServiceTest {
         };
         DuplicateUserException result = assertThrows(DuplicateUserException.class,runnable);
         assertEquals(exceptionMessage, result.getMessage());
+    }
+
+    @Ignore("Ignore message goes here")
+    @Test
+    public void brokenTest(){
+        throw new RuntimeException("this test is broken");
     }
 
 }
