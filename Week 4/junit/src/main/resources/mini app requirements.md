@@ -9,6 +9,7 @@ This application is designed for storing usernames within database. All this app
   - return a success message if the username is stored
 - It should not allow for duplicate usernames
   - throw DuplicateUserException if someone tries to store a duplicate username
+    - error message should be "Username taken: please choose another"
 
 ## Test Driven Development Process
 - Get requirements in order
