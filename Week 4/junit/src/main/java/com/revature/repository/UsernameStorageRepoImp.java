@@ -8,7 +8,7 @@ import java.util.List;
 public class UsernameStorageRepoImp implements UsernameStorageRepo{
 
     // this is used to represent a "real" database
-    public List<String> usernameStorage;
+    private List<String> usernameStorage;
 
     // when an object is made it "initializes" our database
     public UsernameStorageRepoImp(){
@@ -46,4 +46,10 @@ public class UsernameStorageRepoImp implements UsernameStorageRepo{
         usernameStorage.add(username);
         return username;
     }
+
+    @Override
+    public List<String> getUsernames() {
+        return usernameStorage;
+    }
+
 }

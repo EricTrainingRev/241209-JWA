@@ -35,6 +35,10 @@ public class UsernameStorageRepoTest {
             Unless your test data is computationally expensive, or you must keep track of state between
             tests, you should default to resetting your test data after each test. This helps to prevent
             unintended failures when executing your tests due to the state of your test data being transformed
+
+            Keep in mind that only the repo object is being testing: this is an example of performing unit tests.
+            However, if we were actually connecting to a database using JDBC this would be more like Integration
+            testing (both our code AND the database would need to be functioning properly for the tests to pass)
          */
         usernameStorageRepo = new UsernameStorageRepoImp();
         positiveUsername = "Robin";
@@ -74,6 +78,13 @@ public class UsernameStorageRepoTest {
             Assert.assertEquals(duplicateUserExceptionMessage, e.getMessage());
         }
 
+    }
+
+    @Test
+    public void getUsernamesPositive(){
+        // when grabbing data from a database checking the required number of elements in the response
+        // data is usually sufficient a check
+        Assert.assertEquals(1, usernameStorageRepo.getUsernames().size());
     }
 
 }

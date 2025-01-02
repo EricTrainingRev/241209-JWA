@@ -7,6 +7,7 @@ This application is designed for storing usernames within database. All this app
 ## Requirements
 - The application should store usernames as String objects in an ArrayList
   - return a success message if the username is stored
+    - success message should be "{username} added to database successfully"
 - It should not allow for duplicate usernames
   - throw DuplicateUserException if someone tries to store a duplicate username
     - error message should be "Username taken: please choose another"
