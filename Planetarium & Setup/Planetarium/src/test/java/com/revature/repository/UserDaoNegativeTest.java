@@ -1,8 +1,12 @@
 package com.revature.repository;
 
+import com.revature.planetarium.entities.User;
+import com.revature.planetarium.exceptions.UserFail;
 import com.revature.planetarium.repository.user.UserDao;
 import com.revature.planetarium.repository.user.UserDaoImp;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -10,25 +14,29 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import  static org.junit.runners.Parameterized.*;
-@RunWith(Parameterized.class)
-public class UserDaoNegativeTest {
 
-    private UserDao userDao;
+@RunWith(Parameterized.class)
+public class UserDaoNegativeTest extends UserDaoTest{
 
     @Parameter
-    private int userId;
+    public int userId;
 
     @Parameter(1)
-    private String username;
+    public String username;
 
     @Parameter(2)
-    private String password;
+    public String password;
 
     @Parameter(3)
-    private String exceptionMessage;
+    public String exceptionMessage;
 
+    /*
+        You can hardcode your test values, but for a longer list like this you would probably be better
+        off in the long run loading your test data from a file (like a csv) and creating your arrays
+        of data that way
+     */
     @Parameters
-    public Collection<Object> inputs(){
+    public static Collection<Object> inputs(){
         return Arrays.asList(new Object[][]{
                 {0,"Batman","Krypton-was_2000","Invalid username"},
                 {0,"Bane","Krypton-was_2000","Invalid username"},
@@ -45,9 +53,17 @@ public class UserDaoNegativeTest {
         });
     }
 
-    @Before
-    public void setup(){
-        userDao = new UserDaoImp();
+    /*
+        NOTE: this is considered 1 test for the purpose of the @Before
+        setup method in the parent test class: the database will be
+        reset, and then the test method below will run for each collection
+        of test data in the inputs method above
+     */
+    @Test
+    public void createUserNegativeTest(){
+        User testUser = new User(userId, username, password);
+        UserFail exception = Assert.assertThrows(UserFail.class, ()-> {userDao.createUser(testUser);});
+        Assert.assertEquals(exceptionMessage, exception.getMessage());
     }
 
 }

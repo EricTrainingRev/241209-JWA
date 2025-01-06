@@ -9,15 +9,12 @@ import org.junit.Test;
 
 import java.util.Optional;
 
-public class UserDaoPositiveTest {
+public class UserDaoPositiveTest extends UserDaoTest {
 
-    private UserDao userDao;
     private User positiveUser;
 
-    //TODO: add database reset script to setup method
     @Before
-    public void setup(){
-        userDao = new UserDaoImp();
+    public void positiveSetup(){
         positiveUser = new User(0, "Super_man-2001", "Krypton-was_2000");
     }
 
