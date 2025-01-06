@@ -1,6 +1,9 @@
 package com.revature.service;
 
 import com.revature.dao.NameDAO;
+import com.revature.exception.BillyDetectedException;
+import com.revature.exception.DuplicateUsernameException;
+import com.revature.exception.NameAdditionException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,8 +37,11 @@ public class NameServiceTest {
     private NameService nameService;
 
     private String positiveName;
+    private String billy;
+    private String duplicateName;
 
     private List<String> mockNameList;
+    private List<String> duplicateNameList;
 
     @Before
     public void setup(){
@@ -50,6 +56,10 @@ public class NameServiceTest {
         mockNameList = new ArrayList<>();
         mockNameList.add("Timmy");
         mockNameList.add("Betsy");
+        billy = "billy";
+        duplicateName = "Chuck";
+        duplicateNameList = new ArrayList<>(mockNameList);
+        duplicateNameList.add(duplicateName);
     }
 
     @Test
@@ -78,5 +88,56 @@ public class NameServiceTest {
         String result = nameService.addNameExceptForBilly(positiveName);
         Assert.assertEquals("Name added successfully", result);
     }
+
+    @Test
+    public void negativeAddNameExceptForBillyTryAddingBilly(){
+        BillyDetectedException exception =  Assert.assertThrows(BillyDetectedException.class, () -> {nameService.addNameExceptForBilly(billy);});
+        Assert.assertEquals("Billy is not allowed!", exception.getMessage());
+    }
+
+    @Test
+    public void negativeAddNameExceptForBillyAddingDuplicateName(){
+        Mockito.when(nameDAO.returnNames()).thenReturn(duplicateNameList);
+        DuplicateUsernameException exception = Assert.assertThrows(DuplicateUsernameException.class, () -> {nameService.addNameExceptForBilly(duplicateName);});
+        Assert.assertEquals("Name must be unique", exception.getMessage());
+    }
+
+    @Test
+    public void negativeAddNameExceptForBillyNameFailsToAdd(){
+        Mockito.when(nameDAO.returnNames()).thenReturn(mockNameList);
+        // No need to mock the addNames method, because methods without stub info return their default value for their type
+        NameAdditionException exception = Assert.assertThrows(NameAdditionException.class, () -> {nameService.addNameExceptForBilly(positiveName);});
+        Assert.assertEquals("There was an issue adding the name to the database", exception.getMessage());
+    }
+
+    /*
+        STANDALONE EXAMPLES
+     */
+
+    @Test
+    public void mocksCanThrowExceptions(){
+        Mockito.when(nameDAO.returnNames()).thenThrow(new BillyDetectedException("This would not normally happen, just showing for the example"));
+        nameService.addNameExceptForBilly(positiveName);
+    }
+
+    /*
+        Anytime you need to gather state information about your mock test objects (this can be for
+        gathering stakeholder metrics, validating requirements for regulators, meeting internal
+        auxiliary requirements, etc.) you can test the state of the mock object itself. The main
+        way of doing this is through the use of Mockito's "verify" method
+     */
+    @Test
+    public void validateStateOfMock(){
+        Mockito.when(nameDAO.returnNames()).thenReturn(mockNameList);
+        Mockito.when(nameDAO.addName(Mockito.anyString())).thenReturn(true);
+        nameService.addNameExceptForBilly(positiveName);
+        /*
+            The code below checks that our mock object called the addName method with the argument
+            provided by positiveName one time. If not an exception is thrown and the test will
+            fail
+         */
+        Mockito.verify(nameDAO).addName(positiveName);
+    }
+
 
 }

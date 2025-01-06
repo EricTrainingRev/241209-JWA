@@ -21,6 +21,9 @@ public class NameDAO {
         In order to stub our mock object methods the methods
         need to be available in the mocked class, hence the
         unimplemented methods below
+
+        Keep in mind if you don't provide Mockito with a stub result for a method then Mockito
+        will return whatever the default of the return type is when the method is called
      */
 
     //TODO: implement method
