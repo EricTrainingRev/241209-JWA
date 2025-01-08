@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Optional;
 
 import static org.junit.runners.Parameterized.*;
 
@@ -18,6 +19,8 @@ import static org.junit.runners.Parameterized.*;
 public class UserServiceAuthenticateNegativeTest extends UserServiceTest {
 
     private User negativeUser;
+    private Optional<User> optionalWithUser;
+    private User batman;
 
     @Parameter
     public int userId;
@@ -31,6 +34,7 @@ public class UserServiceAuthenticateNegativeTest extends UserServiceTest {
     @Parameter(3)
     public String expectedExceptionMessage;
 
+
     @Parameters
     public static Collection<Object> inputs(){
         return Arrays.asList(new Object[][]{
@@ -42,12 +46,15 @@ public class UserServiceAuthenticateNegativeTest extends UserServiceTest {
     @Before
     public void negativeSetup(){
         negativeUser = new User(userId,username,password);
+        batman = new User(1,"Batman","Iamthenight1939");
+        optionalWithUser = Optional.of(batman);
     }
 
     @Test
     public void authenticateNegativeTest(){
         try{
-            Mockito.when(userDao.findUserByUsername(Mockito.any())).thenThrow(new AssertionError("userDao method called when it should not have been"));
+            Mockito.when(userDao.findUserByUsername("Batman")).thenReturn(optionalWithUser);
+            Mockito.when(userDao.findUserByUsername(Mockito.anyString())).thenReturn(Optional.empty());
             userService.authenticate(negativeUser);
             Assert.fail("Expected UserFail to be thrown, but it was not");
         } catch (UserFail e){
