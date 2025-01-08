@@ -1,19 +1,25 @@
-package com.revature.repository;
+package com.revature.service.negative;
 
 import com.revature.planetarium.entities.User;
 import com.revature.planetarium.exceptions.UserFail;
+import com.revature.service.parent.UserServiceTest;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-import  static org.junit.runners.Parameterized.*;
+import static org.junit.runners.Parameterized.Parameter;
+import static org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class UserDaoCreateUserNegativeTest extends UserDaoTest{
+public class UserServiceCreateUserNegativeTest extends UserServiceTest {
+
+    private User negativeUser;
 
     @Parameter
     public int userId;
@@ -25,13 +31,8 @@ public class UserDaoCreateUserNegativeTest extends UserDaoTest{
     public String password;
 
     @Parameter(3)
-    public String exceptionMessage;
+    public String expectedExceptionMessage;
 
-    /*
-        You can hardcode your test values, but for a longer list like this you would probably be better
-        off in the long run loading your test data from a file (like a csv) and creating your arrays
-        of data that way
-     */
     @Parameters
     public static Collection<Object> inputs(){
         return Arrays.asList(new Object[][]{
@@ -50,17 +51,17 @@ public class UserDaoCreateUserNegativeTest extends UserDaoTest{
         });
     }
 
-    /*
-        NOTE: this is considered 1 test for the purpose of the @Before
-        setup method in the parent test class: the database will be
-        reset, and then the test method below will run for each collection
-        of test data in the inputs method above
-     */
+    @Before
+    public void negativeSetup(){
+        negativeUser = new User(userId, username, password);
+    }
+
+
     @Test
     public void createUserNegativeTest(){
-        User testUser = new User(userId, username, password);
-        UserFail exception = Assert.assertThrows(UserFail.class, ()-> {userDao.createUser(testUser);});
-        Assert.assertEquals(exceptionMessage, exception.getMessage());
+        Mockito.when(userDao.createUser(negativeUser)).thenThrow(new AssertionError("UserFail exception expected, but it was not thrown when it should have been"));
+        UserFail userFail = Assert.assertThrows(UserFail.class, ()->{userService.createUser(negativeUser);});
+        Assert.assertEquals(expectedExceptionMessage, userFail.getMessage());
     }
 
 }

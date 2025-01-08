@@ -1,6 +1,7 @@
-package com.revature.repository;
+package com.revature.repository.negative;
 
 import com.revature.planetarium.entities.User;
+import com.revature.repository.parent.UserDaoTest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

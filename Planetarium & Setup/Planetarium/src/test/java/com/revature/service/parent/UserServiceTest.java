@@ -1,4 +1,4 @@
-package com.revature.service;
+package com.revature.service.parent;
 
 import com.revature.planetarium.repository.user.UserDao;
 import com.revature.planetarium.repository.user.UserDaoImp;
