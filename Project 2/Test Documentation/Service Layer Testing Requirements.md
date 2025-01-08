@@ -28,7 +28,7 @@ This document outlines the testing requirements for the Service layer of the Pla
             - `password` should not be set
     - **Failure**:
         - if `username` is invalid
-            - throw unhandled 'UserFail` exception with message "Invalid username"
+            - throw unhandled 'UserFail` exception with message "Invalid credentials"
         - if `password` is invalid
             - throw unhandled 'UserFail` exception with message "Invalid credentials"
 
