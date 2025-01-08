@@ -7,7 +7,8 @@ import static org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
         UserDaoPositiveTest.class,
-        UserDaoNegativeTest.class
+        UserDaoCreateUserNegativeTest.class,
+        UserDaoFindUserByUsernameNegativeTest.class
 })
 public class UserDaoTestSuite {
 

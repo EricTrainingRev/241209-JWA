@@ -12,10 +12,12 @@ import java.util.Optional;
 public class UserDaoPositiveTest extends UserDaoTest {
 
     private User positiveUser;
+    private String positiveUsername;
 
     @Before
     public void positiveSetup(){
         positiveUser = new User(0, "Super_man-2001", "Krypton-was_2000");
+        positiveUsername = "Batman";
     }
 
     @Test
@@ -23,6 +25,12 @@ public class UserDaoPositiveTest extends UserDaoTest {
         Optional<User> response = userDao.createUser(positiveUser);
         Assert.assertTrue(response.isPresent());
         Assert.assertNotEquals(0, response.get().getId());
+    }
+
+    @Test
+    public void findUserByUsernamePositiveTest(){
+        Optional<User> result = userDao.findUserByUsername(positiveUsername);
+        Assert.assertTrue(result.isPresent());
     }
 
 }
