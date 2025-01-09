@@ -1,0 +1,31 @@
+# Types of Tests
+- functional testing
+- non-functional testing
+- **Static Testing**
+    - broad category of testing, it refers to testing/examining a program's code and/or documentation without running the app
+        - linter or spell checker
+        - check for vulnerabilities in dependencies
+        - making sure source code follows company determined best practices
+        - git strategies enforced
+- **Dynamic Testing**
+    - testing an application while it is running
+- white box testing
+- black box testing
+- **Retesting**
+    - testing done after fixing a defect to validate the fix was successful
+        - Retesting is very easy to accomplish with Automated testing
+- **Regression Testing**
+    - testing done after a new feature is added to validate the fix did not break old functionality
+        - Regression testing is very easy to accomplish with Automated testing
+- **Smoke Test**
+    - a test to validate that the resource being tested is actually in a state where it can be tested
+        - think pinging a web application's "ready" route to check that the service is up and running
+    - this kind of test falls under "Acceptance Testing"
+    - "where there is smoke, there is fire"
+    - akin to a general checkup with the doctor
+- **Sanity Test**
+    - A subset of regression testing: you want to test your new feature/fixed defect and make sure it works before running your regression tests
+    - akin to going to a specialist
+- **Alpha & Beta testing**
+    - Alpha Testing: initial round of Acceptance testing, usually User Acceptance Testing, done by internal team members
+    - Beta Testing: secondary round of Acceptance testing where the application is released to a select group of end users for testing
