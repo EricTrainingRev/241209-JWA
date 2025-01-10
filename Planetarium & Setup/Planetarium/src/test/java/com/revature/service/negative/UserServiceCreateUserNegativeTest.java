@@ -58,7 +58,7 @@ public class UserServiceCreateUserNegativeTest extends UserServiceTest {
 
 
     @Test
-    public void createUserNegativeTest(){
+    public void serviceCreateUserNegativeTest(){
         Mockito.when(userDao.createUser(negativeUser)).thenThrow(new AssertionError("UserFail exception expected, but it was not thrown when it should have been"));
         UserFail userFail = Assert.assertThrows(UserFail.class, ()->{userService.createUser(negativeUser);});
         Assert.assertEquals(expectedExceptionMessage, userFail.getMessage());

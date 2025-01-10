@@ -58,7 +58,7 @@ public class UserDaoCreateUserNegativeTest extends UserDaoTest {
         of test data in the inputs method above
      */
     @Test
-    public void createUserNegativeTest(){
+    public void daoCreateUserNegativeTest(){
         User testUser = new User(userId, username, password);
         UserFail exception = Assert.assertThrows(UserFail.class, ()-> {userDao.createUser(testUser);});
         Assert.assertEquals(exceptionMessage, exception.getMessage());

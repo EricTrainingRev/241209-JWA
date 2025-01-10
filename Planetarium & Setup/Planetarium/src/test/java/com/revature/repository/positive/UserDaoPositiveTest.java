@@ -20,14 +20,14 @@ public class UserDaoPositiveTest extends UserDaoTest {
     }
 
     @Test
-    public void createUserPositiveTest(){
+    public void daoCreateUserPositiveTest(){
         Optional<User> response = userDao.createUser(positiveUser);
         Assert.assertTrue(response.isPresent());
         Assert.assertNotEquals(0, response.get().getId());
     }
 
     @Test
-    public void findUserByUsernamePositiveTest(){
+    public void daoFindUserByUsernamePositiveTest(){
         Optional<User> result = userDao.findUserByUsername(positiveUsername);
         Assert.assertTrue(result.isPresent());
     }

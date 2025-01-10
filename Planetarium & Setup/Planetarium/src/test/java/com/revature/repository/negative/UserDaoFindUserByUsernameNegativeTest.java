@@ -18,7 +18,7 @@ public class UserDaoFindUserByUsernameNegativeTest extends UserDaoTest {
     }
 
     @Test
-    public void findUserByUsernameNegativeTest(){
+    public void daoFindUserByUsernameNegativeTest(){
         Optional<User> result = userDao.findUserByUsername(negativeUsername);
         Assert.assertFalse(result.isPresent());
     }

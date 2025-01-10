@@ -37,14 +37,14 @@ public class UserServicePositiveTest extends UserServiceTest {
 
 
     @Test
-    public void createUserPositiveTest(){
+    public void serviceCreateUserPositiveTest(){
         Mockito.when(userDao.createUser(positiveUser)).thenReturn(mockOptional);
         String result = userService.createUser(positiveUser);
         Assert.assertEquals(createUserSuccessMessage, result);
     }
 
     @Test
-    public void authenticatePositiveTest(){
+    public void serviceAuthenticatePositiveTest(){
         Mockito.when(userDao.findUserByUsername(positiveAuthenticateCredentials.getUsername())).thenReturn(authenticateUserOptional);
         User result = userService.authenticate(positiveAuthenticateCredentials);
         Assert.assertEquals(expectedAuthenticateResult, result);

@@ -52,7 +52,7 @@ public class UserServiceAuthenticateNegativeTest extends UserServiceTest {
     }
 
     @Test
-    public void authenticateNegativeTest(){
+    public void serviceAuthenticateNegativeTest(){
         try{
             Mockito.when(userDao.findUserByUsername("Batman")).thenReturn(optionalWithUser);
             Mockito.when(userDao.findUserByUsername(Mockito.anyString())).thenReturn(Optional.empty());
