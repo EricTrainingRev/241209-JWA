@@ -47,4 +47,42 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<!--
+					The Surefire plugin is designed to be used for controlling your unit tests during
+					the Maven build cycle. You can use it to specify what test classes should actually
+					be used when running your tests. This is particularly useful when you are organizing
+					your test classes by suites so that you don't have redundant test executions
+
+					To trigger your tests via Maven you use the "mvn test" command. If you want to regenerate
+					the content Maven creates you add "clean" to the start of the command, and maven will
+					regenerate and replace/remove the old content created
+				-->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.2</version>
+				<configuration>
+					<!--
+						You can either tell Surefire to include or exclude test classes. Depending on
+						your organization of your test files, you should pick the option that provides
+						Surefire with the most information with the least amount of configuration required
+
+						In this example, since the PlanetariumTestSuite tells Junit to run the tests in
+						the repository and service layer, I can tell Surefire to only target the
+						PlanetariumTestSuite class, and all my tests that are complete will execute a single
+						time, as desired
+
+						If instead I had a couple classes that needed to be excluded from the test run, I could
+						wrap those files that hold the class data in excludes tags to tell Surefire not to
+						include them in the test run
+					-->
+					<includes>**/PlanetariumTestSuite.java</includes>
+<!--					<excludes></excludes>-->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
