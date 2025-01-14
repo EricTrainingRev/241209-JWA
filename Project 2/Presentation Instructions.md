@@ -13,9 +13,7 @@
 ## Presentation Order of Operations
 1. Present Test Summary Report/s
     - describe how your test suite evolved moving from a solo to group project
-    - describe how the move from manual to automated testing revealed new information about the Planetarium and your old tests
-    - describe what new information was discovered by your automation test suite
-    - conversely, describe anything your automated test suite missed that you discovered during manual testing
+    - describe what new information was discovered by your integration/unit automation test suite
 2. Run your Automated Tests
     - give a mini retrospective on the process of developing the automation suite while the test suite is running
         - what new defects were discovered in your testing?
