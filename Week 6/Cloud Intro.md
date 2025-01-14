@@ -29,3 +29,15 @@ some of the benefits that AWS offers (along with most other cloud providers)
 - Region = geographic location where one or more AWS services are available
 - Availability Zones = areas that contain the actual data centers
     - these locations have their own redundant power sources, networking, and connectivity options to help maintain high availability and reliability
+
+## Services we Will go Over
+- Relational Database Service (RDS)
+    - This service offers database hosting: AWS handles spinning up a virtual computer, downloading the database software, and setting up the database according to your specifications. They manage the software and environment, so all you have to do is set up the database according to your needs
+- Elastic Cloud Compute (EC2)
+    - this service offers virtual machines: no one has direct access to the hardware AWS uses, instead Amazon partitions portions of the resources available on their hardware to virtual machines that end users can use for their purposes
+        - application deployment
+        - build pipelines
+        - testing
+        - experimenting
+- Simple Storage Service (S3)
+    - this service offers object storage: if it is digital, you can probably store it in an S3 "bucket". Final applications (think a finished JAR) can be stored, configuration data can be stored, photos, anything digital can be stored in a bucket. S3 can even be used for static website hosting
