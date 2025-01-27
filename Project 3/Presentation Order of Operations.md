@@ -1,0 +1,27 @@
+# Order of Operations
+- Introduce team
+- Introduce project
+    - describe goals of project
+        - mention previous iterations
+        - mention any stretch goals achieved or worked on this final sprint
+    - describe primary technologies used
+    - give a general overview of what will be covered in the presentation
+- Describe Agile practices implemented
+    - make sure to describe how these practices affected the team and the final product
+- Describe Git strategies
+    - make sure to describe how your strategies affected the team and the final product
+- Give a demonstration of your project work in action
+    - run tests
+        - unit tests
+        - integration tests
+        - system tests
+- describe testing strategy
+    - how did you determine what to test?
+    - what kind of testing techniques did you use?
+    - what kind of testing did you do?
+- Show off test results
+    - compare final test results to previous sprint results to showcase progress made over three sprints
+- give mini retrospective
+    - what went well
+    - what would you do if you had more time
+- field questions
