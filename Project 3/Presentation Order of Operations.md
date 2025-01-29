@@ -21,6 +21,7 @@
     - what kind of testing did you do?
 - Show off test results
     - compare final test results to previous sprint results to showcase progress made over three sprints
+    - use this time to showcase the work completed fixing defects
 - give mini retrospective
     - what went well
     - what would you do if you had more time
